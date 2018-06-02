@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using OnlineFoodOrderingSystem.DAL;
+using WebApplication1.DAL;
 
 namespace OnlineFoodOrderingSystem.Models
 {
     public partial class FoodTrolley //trolley because punny
     {
-        OnlineFoodContext db = new OnlineFoodContext(); 
+        Food_Ordering db = new Food_Ordering(); 
 
         public string FoodCartID { get; set; }
 
@@ -29,7 +30,7 @@ namespace OnlineFoodOrderingSystem.Models
             return GetCart(controller.HttpContext);
         }
 
-        public void AddToCart(MenuItemID menuItemID)
+        public void AddToCart(MenuItemId menuItemID)
         {
             var cartItem = db.Carts.SingleOrDefault(c=>c.CartId == FoodCartID && c.MenuItemID == menuItemID.Id);
 
@@ -37,7 +38,7 @@ namespace OnlineFoodOrderingSystem.Models
             {
                 cartItem = new Cart
                 {
-                    MenuItemID = menuItemID.Id,
+                    MenuItemId = menuItemID.Id,
                     CartId = FoodCartID,
                     Count = 1,
                     DateCreated = DateTime.Now
@@ -116,16 +117,14 @@ namespace OnlineFoodOrderingSystem.Models
 
             foreach (var item in cartItems)
             {
-                var orderedProduct = new OrderedProduct
+                var orderedFoood = new OrderedFoood
                 {
-                    MenuItemID = item.MenuItemID,
-                    CustomerOrderId = customerOrder.Id,
-                    Quantity = item.Count
+                    MenuItemID = item.MenuItemID, CustomerOrderId = customerOrder.Id, Quantity = item.Count
                 };
 
                 orderTotal += (item.Count*item.Product.Price);
 
-                db.Orderedproducts.Add(orderedProduct);
+                db.OrderedFoood.Add(orderedFoood);
             }
 
             customerOrder.Amount = orderTotal;
@@ -158,8 +157,8 @@ namespace OnlineFoodOrderingSystem.Models
 
         public void MigrateCart(string userName)
         {
-            var foodBasket = db.Carts.Where(c => c.CartId == FoodCartID);
-            foreach (Cart item in foodBasket)
+            var foodCart = db.Carts.Where(c => c.CartId == FoodCartID);
+            foreach (Cart item in foodCart)
             {
                 item.CartId = userName;
             }

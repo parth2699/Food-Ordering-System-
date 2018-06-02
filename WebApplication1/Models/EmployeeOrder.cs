@@ -23,25 +23,7 @@ namespace OnlineFoodOrderingSystem.Models
         [DisplayName("Surname")]
         [StringLength(50)]
         public string LastName { get; set; }
-        /*[Required(ErrorMessage = "Pls enter your address.")]
-        [StringLength(70)]
-        public string Address { get; set; }
-        [Required(ErrorMessage = "City is required")]
-        [StringLength(40)]
-        public string City { get; set; }
-        [Required(ErrorMessage = "State is required")]
-        [StringLength(40)]
-        public string State { get; set; }
-        [Required(ErrorMessage = "Postal Code is required")]
-        [DisplayName("Postal Code")]
-        [StringLength(10)]
-        public string PostalCode { get; set; }
-        [Required(ErrorMessage = "Country is required")]
-        [StringLength(40)]
-        public string Country { get; set; }
-        [Required(ErrorMessage = "Phone is required")]
-        [StringLength(24)]
-        public string Phone { get; set; }*/
+       
         [Required(ErrorMessage = "Pls enter email address")]
         [DisplayName("Email Address")]
 

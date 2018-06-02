@@ -127,6 +127,14 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
     <Content Include="OnlineFoodOrder.xsc">
       <DependentUpon>OnlineFoodOrder.xsd</DependentUpon>
@@ -146,6 +154,37 @@
     <Content Include="OnlineFoodOrder.xss">
       <DependentUpon>OnlineFoodOrder.xsd</DependentUpon>
     </Content>
+    <Content Include="Views\FoodCategories\Create.cshtml" />
+    <Content Include="Views\FoodCategories\Delete.cshtml" />
+    <Content Include="Views\FoodCategories\Details.cshtml" />
+    <Content Include="Views\FoodCategories\Edit.cshtml" />
+    <Content Include="Views\FoodCategories\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Carts\Create.cshtml" />
+    <Content Include="Views\Carts\Delete.cshtml" />
+    <Content Include="Views\Carts\Details.cshtml" />
+    <Content Include="Views\Carts\Edit.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\EmployeeOrders\Create.cshtml" />
+    <Content Include="Views\EmployeeOrders\Delete.cshtml" />
+    <Content Include="Views\EmployeeOrders\Details.cshtml" />
+    <Content Include="Views\EmployeeOrders\Edit.cshtml" />
+    <Content Include="Views\EmployeeOrders\Index.cshtml" />
+    <Content Include="Views\Menus\Create.cshtml" />
+    <Content Include="Views\Menus\Delete.cshtml" />
+    <Content Include="Views\Menus\Details.cshtml" />
+    <Content Include="Views\Menus\Edit.cshtml" />
+    <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\OrderedFooods\Create.cshtml" />
+    <Content Include="Views\OrderedFooods\Delete.cshtml" />
+    <Content Include="Views\OrderedFooods\Details.cshtml" />
+    <Content Include="Views\OrderedFooods\Edit.cshtml" />
+    <Content Include="Views\OrderedFooods\Index.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -167,6 +206,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\EmployeeOrdersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Controllers\FoodCategoriesController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\OrderedFooodsController.cs" />
     <Compile Include="DAL\Food_Ordering.cs" />
     <Compile Include="DAL\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -202,7 +247,6 @@
     <Compile Include="Models\EmployeeOrder.cs" />
     <Compile Include="Models\OrderedFoood.cs" />
     <Compile Include="Models\Menu.cs" />
-    <Compile Include="Models\FoodTrolley.cs" />
     <Compile Include="OnlineFoodOrder.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -248,7 +292,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

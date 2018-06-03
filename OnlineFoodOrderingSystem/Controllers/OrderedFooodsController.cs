@@ -41,7 +41,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         public ActionResult Create()
         {
             ViewBag.EmployeeOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName");
-            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name");
+            ViewBag.MenMenuItemIduId = new SelectList(db.Menus, "ID", "Name");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MenuId,EmployeeOrderId,Quantity")] OrderedFoood orderedFoood)
+        public ActionResult Create([Bind(Include = "MenuItemId,EmployeeOrderId,Quantity")] OrderedFoood orderedFoood)
         {
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace OnlineFoodOrderingSystem.Controllers
             }
 
             ViewBag.EmployeeOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.EmployeeOrderId);
-            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuId);
+            ViewBag.MenuItemId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuItemId);
             return View(orderedFoood);
         }
 
@@ -77,7 +77,7 @@ namespace OnlineFoodOrderingSystem.Controllers
                 return HttpNotFound();
             }
             ViewBag.EmployeeOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.EmployeeOrderId);
-            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuId);
+            ViewBag.MenuItemId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuItemId);
             return View(orderedFoood);
         }
 
@@ -86,7 +86,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MenuId,EmployeeOrderId,Quantity")] OrderedFoood orderedFoood)
+        public ActionResult Edit([Bind(Include = "MenuItemId,EmployeeOrderId,Quantity")] OrderedFoood orderedFoood)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace OnlineFoodOrderingSystem.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.EmployeeOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.EmployeeOrderId);
-            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuId);
+            ViewBag.MenuItemId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuItemId);
             return View(orderedFoood);
         }
 

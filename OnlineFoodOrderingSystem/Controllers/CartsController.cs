@@ -37,7 +37,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         // GET: Carts/Create
         public ActionResult Create()
         {
-            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name");
+            ViewBag.MenuItemId = new SelectList(db.Menus, "ID", "Name");
             return View();
         }
 
@@ -46,7 +46,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CartId,MenuId,Count,DateCreated")] Cart cart)
+        public ActionResult Create([Bind(Include = "Id,CartId,MenuItemId,Count,DateCreated")] Cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace OnlineFoodOrderingSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", cart.MenuId);
+            ViewBag.MenuItemId = new SelectList(db.Menus, "ID", "Name", cart.MenuItemId);
             return View(cart);
         }
 
@@ -71,7 +71,7 @@ namespace OnlineFoodOrderingSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", cart.MenuId);
+            ViewBag.MenuItemId = new SelectList(db.Menus, "ID", "Name", cart.MenuItemId);
             return View(cart);
         }
 
@@ -80,7 +80,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CartId,MenuId,Count,DateCreated")] Cart cart)
+        public ActionResult Edit([Bind(Include = "Id,CartId,MenuItemId,Count,DateCreated")] Cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace OnlineFoodOrderingSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", cart.MenuId);
+            ViewBag.MenuItemId = new SelectList(db.Menus, "ID", "Name", cart.MenuItemId);
             return View(cart);
         }
 

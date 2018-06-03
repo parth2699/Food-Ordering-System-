@@ -19,5 +19,6 @@ namespace OnlineFoodOrderingSystem.Models
         public DateTime DateCreated { get; set; }
 
         public virtual Menu Menu { get; set; }
+        public int MenuItemID { get; internal set; }
     }
 }

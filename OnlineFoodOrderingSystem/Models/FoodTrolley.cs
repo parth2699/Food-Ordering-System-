@@ -9,7 +9,7 @@ using OnlineFoodOrderingSystem.Models;
 
 namespace OnlineFoodOrderingSystem.Models
 {
-    public partial class FoodTrolley //trolley because punny
+    public partial class FoodBasket //basket because punny
     {
         Food_Ordering db = new Food_Ordering(); 
 
@@ -17,20 +17,20 @@ namespace OnlineFoodOrderingSystem.Models
 
         public const string CartSessionKey = "cartId"; //session 
 
-        public static FoodTrolley GetCart(HttpContextBase context) //base class for HTTP requests  
+        public static FoodBasket GetCart(HttpContextBase context) //base class for HTTP requests  
         {
-            var cart = new FoodTrolley();
+            var cart = new FoodBasket();
             cart.FoodCartID = cart.GetCartId(context);
 
             return cart;
         }
 
-        public static FoodTrolley GetCart(Controller controller)
+        public static FoodBasket GetCart(Controller controller)
         {
             return GetCart(controller.HttpContext);
         }
 
-        public void AddToCart(MenuItemId menuItemID)
+        public void AddToCart(MenuItem menuItemID)
         {
             var cartItem = db.Carts.SingleOrDefault(c=>c.CartId == FoodCartID && c.MenuItemID == menuItemID.Id);
 
@@ -119,7 +119,7 @@ namespace OnlineFoodOrderingSystem.Models
             {
                 var orderedFoood = new OrderedFoood
                 {
-                    MenuItemID = item.MenuItemID, EmployeeOrderId = EmployeeOrder.Id, Quantity = item.Count
+                    MenuItemId = item.MenuItemID, EmployeeOrderId = EmployeeOrder.Id, Quantity = item.Count
                 };
 
                 orderTotal += (item.Count*item.Menu.Price);
@@ -157,8 +157,8 @@ namespace OnlineFoodOrderingSystem.Models
 
         public void MigrateCart(string userName)
         {
-            var foodCart = db.Carts.Where(c => c.CartId == FoodCartID);
-            foreach (Cart item in foodCart)
+            var fooodCart = db.Carts.Where(c => c.CartId == FoodCartID);
+            foreach (Cart item in fooodCart)
             {
                 item.CartId = userName;
             }

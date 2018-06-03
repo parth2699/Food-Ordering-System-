@@ -12,12 +12,12 @@ namespace OnlineFoodOrderingSystem.Controllers
     public class AccountsController : Controller
     {
 
-        private void MigrateFoodTrolley(string userName)
+        private void MigrateFoodBasket(string userName)
         {
-            var cart = FoodTrolley.GetCart(this.HttpContext);
+            var cart = FoodBasket.GetCart(this.HttpContext);
 
             cart.MigrateCart(userName);
-            Session[FoodTrolley.CartSessionKey] = userName;
+            Session[FoodBasket.CartSessionKey] = userName;
         }
 
         public ActionResult LogOn()
@@ -32,7 +32,7 @@ namespace OnlineFoodOrderingSystem.Controllers
             {
                 if (Membership.ValidateUser(model.UserName, model.Password))
                 {
-                    MigrateFoodTrolley(model.UserName);
+                    MigrateFoodBasket(model.UserName);
                     
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
@@ -55,7 +55,7 @@ namespace OnlineFoodOrderingSystem.Controllers
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
-            var cart = FoodTrolley.GetCart(this.HttpContext);
+            var cart = FoodBasket.GetCart(this.HttpContext);
             cart.EmptyCart();
 
             return RedirectToAction("Index", "Home");
@@ -77,7 +77,7 @@ namespace OnlineFoodOrderingSystem.Controllers
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    MigrateFoodTrolley(model.UserName);
+                    MigrateFoodBasket(model.UserName);
 
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");

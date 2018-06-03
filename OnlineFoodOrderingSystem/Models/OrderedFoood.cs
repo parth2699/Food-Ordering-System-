@@ -10,7 +10,7 @@ namespace OnlineFoodOrderingSystem.Models
     public class OrderedFoood 
     {
         [Key][Column(Order = 0)]
-        public int MenuId { get; set; }
+        public int MenuItemId { get; set; }
 
         [Key][Column(Order = 1)]
         public int EmployeeOrderId { get; set; }

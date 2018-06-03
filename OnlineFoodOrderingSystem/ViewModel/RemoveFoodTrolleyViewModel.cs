@@ -5,7 +5,7 @@ using System.Web;
 
 namespace OnlineFoodOrderingSystem.ViewModels
 {
-    public class RemoveFoodTrolleyViewModel
+    public class RemoveFoodBasketViewModel
     {
         public string Message { get; set; }
         public decimal CartTotal { get; set; }

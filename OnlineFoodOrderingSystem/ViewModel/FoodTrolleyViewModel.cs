@@ -6,7 +6,7 @@ using OnlineFoodOrderingSystem.Models;
 
 namespace OnlineFoodOrderingSystem.ViewModels
 {
-    public class FoodTrolleyViewModel
+    public class FoodBasketViewModel
     {
         public List<Cart> CartItems { get; set; }
         public decimal CartTotal { get; set; }

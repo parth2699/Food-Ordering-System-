@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,7 +30,7 @@ namespace OnlineFoodOrderingSystem.Models
             return GetCart(controller.HttpContext);
         }
 
-        public void AddToCart(MenuItemId menuItemID)
+        /*public void AddToCart(MenuItemId menuItemID)
         {
             var cartItem = db.Carts.SingleOrDefault(c=>c.CartId == FoodCartID && c.MenuItemID == menuItemID.Id);
 
@@ -134,7 +134,7 @@ namespace OnlineFoodOrderingSystem.Models
             EmptyCart();
 
             return customerOrder.Id;
-        }
+        }*/
 
         public string GetCartId(HttpContextBase context)
         {
@@ -155,7 +155,7 @@ namespace OnlineFoodOrderingSystem.Models
             return context.Session[CartSessionKey].ToString();
         }
 
-        public void MigrateCart(string userName)
+        /*public void MigrateCart(string userName)
         {
             var foodCart = db.Carts.Where(c => c.CartId == FoodCartID);
             foreach (Cart item in foodCart)
@@ -164,7 +164,7 @@ namespace OnlineFoodOrderingSystem.Models
             }
 
             db.SaveChanges();
-        }
+        }*/
 
     }
-}*/
+}

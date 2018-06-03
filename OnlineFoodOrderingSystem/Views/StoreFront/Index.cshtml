@@ -1,0 +1,103 @@
+﻿@model OnlineFoodOrderingSystem.Models.FoodCategory
+
+@{
+    ViewBag.Title = @Model.Name;
+}
+
+
+<br/>
+<br/>
+
+<div class="row">
+    <div class="col-xs-12 col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+            @if (Model.Name == "Dairy Products")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/1">DAIRY</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/StoreFront/Index/1">DAIRY</a>
+                </li>
+            }
+
+            @if (Model.Name == "Fruits")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/2">Fruit</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/StoreFront/Index/2">Fruit</a>
+                </li>
+            }
+
+            @if (Model.Name == "Main Meals")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/3">Main</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/StoreFront/Index/3">Main</a>
+                </li>
+            }
+
+            @if (Model.Name == "Bakery & Dessert")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/4">Dessert</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/StoreFront/Index/4">Dessert</a>
+                </li>
+            }
+            @if (Model.Name == "Drinks")
+            {
+                <li class="active">
+                    <a href="~/StoreFront/Index/4">drink</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="~/StoreFront/Index/4">drink</a>
+                </li>
+            }
+
+        </ul>
+    </div>
+    <div class="col-xs-12 col-md-9">
+        <div class="row">
+            @foreach (var Menu in Model.Menus)
+            {
+                <div class="col-xs-12 col-md-3">
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="~/Content/Images/Menus/@(Menu.Name).png">
+                        <div class="caption text-center">
+                            <p>
+                                <b>Name:</b> <span>@Menu.Name</span>
+                            </p>
+                            <p>
+                                <b>Price:</b> <span>@Menu.Price USD</span>
+                            </p>
+                            <p class="text-center">
+                                @Html.ActionLink("Add to cart", "AddToCart", "FoodTrolley", new { id = Menu.ID }, new {@class="btn btn-info"})
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

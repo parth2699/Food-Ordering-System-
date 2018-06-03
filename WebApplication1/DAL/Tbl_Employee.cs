@@ -1,4 +1,4 @@
-namespace WebApplication1.DAL
+namespace OnlineFoodOrderingSystem.DAL
 {
     using System;
     using System.Collections.Generic;

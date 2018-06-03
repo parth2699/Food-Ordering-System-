@@ -1,6 +1,6 @@
-﻿@model MvcAffableBean.Models.CustomerOrder
+﻿@model OnlineFoodOrderingSystem.Models.EmployeeOrder
 @{
-    ViewBag.Title = "Address And Payment";
+    ViewBag.Title = "Payment";
 }
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")"
         type="text/javascript"></script>
@@ -9,23 +9,13 @@
 @using (Html.BeginForm())
 {
     <div class="weird">
-        <h2>Address And Payment</h2>
+        <h2>Payment</h2>
         <fieldset>
             <legend>Shipping Information</legend>
             @Html.EditorForModel()
         </fieldset>
         <fieldset>
-            <legend>Payment</legend>
-            <p>
-                We're running a promotion: all item is free
-                with the promo code: "FREE"
-            </p>
-            <div class="editor-label">
-                @Html.Label("Promo Code")
-            </div>
-            <div class="editor-field">
-                @Html.TextBox("PromoCode")
-            </div>
+            <legend>Payment</legend>         
         </fieldset>
 
         <input type="submit" value="Submit Order"/>

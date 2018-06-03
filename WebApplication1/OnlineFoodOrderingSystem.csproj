@@ -185,6 +185,7 @@
     <Content Include="Views\OrderedFooods\Details.cshtml" />
     <Content Include="Views\OrderedFooods\Edit.cshtml" />
     <Content Include="Views\OrderedFooods\Index.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -206,6 +207,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\EmployeeOrdersController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
@@ -242,7 +244,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\FoodCategory.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeOrder.cs" />
     <Compile Include="Models\FoodTrolley.cs" />
@@ -261,25 +263,12 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Accounts\ChangePassword.cshtml" />
-    <Content Include="Views\Accounts\ChangePasswordSuccess.cshtml" />
-    <Content Include="Views\Accounts\LogOn.cshtml" />
     <Content Include="Views\Accounts\Register.cshtml" />
-    <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
-    <Content Include="Views\Checkout\Complete.cshtml" />
+    <Content Include="Views\FoodTrolley\Payment.cshtml" />
+    <Content Include="Views\FoodTrolley\Complete.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Product\Create.cshtml" />
-    <Content Include="Views\Product\Delete.cshtml" />
-    <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Share\Error.cshtml" />
     <Content Include="Views\Share\_Layout.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using OnlineFoodOrderingSystem.DAL;
 using OnlineFoodOrderingSystem.Models;
 
-namespace WebApplication1.Controllers
+namespace OnlineFoodOrderingSystem.Controllers
 {
     public class OrderedFooodsController : Controller
     {
@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
         // GET: OrderedFooods
         public ActionResult Index()
         {
-            var orderedFooods = db.OrderedFooods.Include(o => o.CustomerOrder).Include(o => o.Product);
+            var orderedFooods = db.OrderedFooods.Include(o => o.EmployeeOrder).Include(o => o.Menu);
             return View(orderedFooods.ToList());
         }
 
@@ -40,8 +40,8 @@ namespace WebApplication1.Controllers
         // GET: OrderedFooods/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName");
-            ViewBag.ProductId = new SelectList(db.Menus, "ID", "Name");
+            ViewBag.EmployeeOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName");
+            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,CustomerOrderId,Quantity")] OrderedFoood orderedFoood)
+        public ActionResult Create([Bind(Include = "MenuId,EmployeeOrderId,Quantity")] OrderedFoood orderedFoood)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.CustomerOrderId);
-            ViewBag.ProductId = new SelectList(db.Menus, "ID", "Name", orderedFoood.ProductId);
+            ViewBag.EmployeeOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.EmployeeOrderId);
+            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuId);
             return View(orderedFoood);
         }
 
@@ -76,8 +76,8 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.CustomerOrderId);
-            ViewBag.ProductId = new SelectList(db.Menus, "ID", "Name", orderedFoood.ProductId);
+            ViewBag.EmployeeOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.EmployeeOrderId);
+            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuId);
             return View(orderedFoood);
         }
 
@@ -86,7 +86,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,CustomerOrderId,Quantity")] OrderedFoood orderedFoood)
+        public ActionResult Edit([Bind(Include = "MenuId,EmployeeOrderId,Quantity")] OrderedFoood orderedFoood)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace WebApplication1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.CustomerOrderId);
-            ViewBag.ProductId = new SelectList(db.Menus, "ID", "Name", orderedFoood.ProductId);
+            ViewBag.EmployeeOrderId = new SelectList(db.EmployeeOrders, "Id", "FirstName", orderedFoood.EmployeeOrderId);
+            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", orderedFoood.MenuId);
             return View(orderedFoood);
         }
 

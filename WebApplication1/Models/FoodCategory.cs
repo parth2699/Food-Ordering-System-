@@ -15,6 +15,6 @@ namespace OnlineFoodOrderingSystem.Models
         [MaxLength(45,ErrorMessage = "Category name is a max of 20 chars")]
         public string Name { get; set; }
 
-        public virtual ICollection<Menu> Products { get; set; } 
+        public virtual ICollection<Menu> Menus { get; set; } 
     }
 }

@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using OnlineFoodOrderingSystem.DAL;
 using OnlineFoodOrderingSystem.Models;
 
-namespace WebApplication1.Controllers
+namespace OnlineFoodOrderingSystem.Controllers
 {
     public class MenusController : Controller
     {

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
+using System.Web.UI.WebControls;
 
 namespace OnlineFoodOrderingSystem.Models
 {
@@ -20,6 +18,6 @@ namespace OnlineFoodOrderingSystem.Models
         [Column(TypeName = "datetime2")]
         public DateTime DateCreated { get; set; }
 
-        public virtual Menu Product { get; set; }
+        public virtual Menu Menu { get; set; }
     }
 }

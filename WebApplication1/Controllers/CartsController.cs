@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using OnlineFoodOrderingSystem.DAL;
 using OnlineFoodOrderingSystem.Models;
 
-namespace WebApplication1.Controllers
+namespace OnlineFoodOrderingSystem.Controllers
 {
     public class CartsController : Controller
     {
@@ -18,7 +15,7 @@ namespace WebApplication1.Controllers
         // GET: Carts
         public ActionResult Index()
         {
-            var carts = db.Carts.Include(c => c.Product);
+            var carts = db.Carts.Include(c => c.Menu);
             return View(carts.ToList());
         }
 
@@ -40,7 +37,7 @@ namespace WebApplication1.Controllers
         // GET: Carts/Create
         public ActionResult Create()
         {
-            ViewBag.ProductId = new SelectList(db.Menus, "ID", "Name");
+            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name");
             return View();
         }
 
@@ -49,7 +46,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CartId,ProductId,Count,DateCreated")] Cart cart)
+        public ActionResult Create([Bind(Include = "Id,CartId,MenuId,Count,DateCreated")] Cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +55,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductId = new SelectList(db.Menus, "ID", "Name", cart.ProductId);
+            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", cart.MenuId);
             return View(cart);
         }
 
@@ -74,7 +71,7 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductId = new SelectList(db.Menus, "ID", "Name", cart.ProductId);
+            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", cart.MenuId);
             return View(cart);
         }
 
@@ -83,7 +80,7 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CartId,ProductId,Count,DateCreated")] Cart cart)
+        public ActionResult Edit([Bind(Include = "Id,CartId,MenuId,Count,DateCreated")] Cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +88,7 @@ namespace WebApplication1.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductId = new SelectList(db.Menus, "ID", "Name", cart.ProductId);
+            ViewBag.MenuId = new SelectList(db.Menus, "ID", "Name", cart.MenuId);
             return View(cart);
         }
 

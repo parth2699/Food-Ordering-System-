@@ -1,4 +1,4 @@
-namespace WebApplication1.DAL
+namespace OnlineFoodOrderingSystem.DAL
 {
     using System;
     using System.Data.Entity;
@@ -13,7 +13,7 @@ namespace WebApplication1.DAL
         }
 
         public virtual DbSet<Tbl_MenuCategory> Tbl_MenuCategory { get; set; }
-        public virtual DbSet<tbl_MenuItem> Tbl_MenuItem { get; set; }
+        public virtual DbSet<Tbl_MenuItem> Tbl_MenuItem { get; set; }
         public virtual DbSet<Tbl_Employee> Tbl_Employee { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -22,11 +22,11 @@ namespace WebApplication1.DAL
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<tbl_MenuItem>()
+            modelBuilder.Entity<Tbl_MenuItem>()
                 .Property(e => e.Price)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<tbl_MenuItem>()
+            modelBuilder.Entity<Tbl_MenuItem>()
                 .Property(e => e.Visible)
                 .IsFixedLength();
 

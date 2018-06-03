@@ -32,7 +32,7 @@ namespace OnlineFoodOrderingSystem.Models
 
         public virtual FoodCategory Category { get; set; }
 
-        public virtual ICollection<OrderedFoood> OrderedProducts { get; set; } 
+        public virtual ICollection<OrderedFoood> OrderedFooods { get; set; } 
 
     }
 }

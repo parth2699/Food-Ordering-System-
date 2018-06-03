@@ -1,6 +1,6 @@
 ﻿@using System.Diagnostics.Eventing.Reader
 @using System.Globalization
-@model MvcAffableBean.ViewModels.ShoppingCartViewModel
+@model OnlineFoodOrderingSystem.ViewModels.FoodTrolleyViewModel
 
 @{
     ViewBag.Title = "Store Checkout";
@@ -23,7 +23,7 @@ else
     <table class="table-responsive table-bordered table-striped">
         <tr>
             <th>
-                Product Name
+                Menu Name
             </th>
             <th>
                 Price (each)
@@ -36,21 +36,21 @@ else
         </tr>
         @foreach (var item in Model.CartItems)
         {
-            <tr id="row-@item.ProductId">
+            <tr id="row-@item.MenuId">
                 <td>
-                    @Html.ActionLink(item.Product.Name, "Details", "Products", new {id = item.ProductId}, null)
+                    @Html.ActionLink(item.Menu.Name, "Details", "Menus", new {id = item.MenuId}, null)
                 </td>
                 <td>
-                    @item.Product.Price
+                    @item.Menu.Price
                 </td>
-                <td id="item-count-@item.ProductId">
+                <td id="item-count-@item.MenuId">
                     @item.Count
                 </td>
                 <td>
-                    @((item.Product.Price*item.Count).ToString("c",us))
+                    @((item.Menu.Price*item.Count).ToString("c",us))
                 </td>
                 <td>
-                    <a href="" class="RemoveLink" data-id="@item.ProductId">
+                    <a href="" class="RemoveLink" data-id="@item.MenuId">
                         Remove from cart
                     </a>
                 </td>
@@ -72,10 +72,6 @@ else
         <a href="~/StoreFront/Index/1">Continue shopping>></a>
     </p>
     <p class="button">
-        @Html.ActionLink("Checkout>> ", "AddressAndPayment", "Checkout")
+        @Html.ActionLink("Checkout>> ", "Payment", "Checkout")
     </p>
 }
-
-
-
-

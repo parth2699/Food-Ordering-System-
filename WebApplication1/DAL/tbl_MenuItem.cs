@@ -1,4 +1,4 @@
-namespace WebApplication1.DAL
+namespace OnlineFoodOrderingSystem.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -6,7 +6,7 @@ namespace WebApplication1.DAL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class tbl_MenuItem
+    public partial class Tbl_MenuItem
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

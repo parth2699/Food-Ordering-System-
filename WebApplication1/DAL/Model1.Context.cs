@@ -12,7 +12,7 @@ namespace OnlineFoodOrderingSystem.DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using WebApplication1.DAL;
+    using OnlineFoodOrderingSystem.DAL;
 
     public partial class Food_OrderingEntities : DbContext
     {
@@ -27,7 +27,7 @@ namespace OnlineFoodOrderingSystem.DAL
         }
     
         public virtual DbSet<Tbl_MenuCategory> Tbl_MenuCategory { get; set; }
-        public virtual DbSet<tbl_MenuItem> tbl_MenuItem { get; set; }
+        public virtual DbSet<Tbl_MenuItem> tbl_MenuItem { get; set; }
         public virtual DbSet<Tbl_Member> Tbl_Member { get; set; }
 
         public System.Data.Entity.DbSet<OnlineFoodOrderingSystem.Models.FoodCategory> FoodCategories { get; set; }

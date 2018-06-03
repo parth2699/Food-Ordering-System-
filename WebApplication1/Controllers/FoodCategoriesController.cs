@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using OnlineFoodOrderingSystem.DAL;
 using OnlineFoodOrderingSystem.Models;
 
-namespace WebApplication1.Controllers
+namespace OnlineFoodOrderingSystem.Controllers
 {
     public class FoodCategoriesController : Controller
     {

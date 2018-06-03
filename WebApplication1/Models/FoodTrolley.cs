@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using OnlineFoodOrderingSystem.DAL;
-using WebApplication1.DAL;
+using OnlineFoodOrderingSystem.Models;
 
 namespace OnlineFoodOrderingSystem.Models
 {
@@ -30,7 +30,7 @@ namespace OnlineFoodOrderingSystem.Models
             return GetCart(controller.HttpContext);
         }
 
-        /*public void AddToCart(MenuItemId menuItemID)
+        public void AddToCart(MenuItemId menuItemID)
         {
             var cartItem = db.Carts.SingleOrDefault(c=>c.CartId == FoodCartID && c.MenuItemID == menuItemID.Id);
 
@@ -82,7 +82,7 @@ namespace OnlineFoodOrderingSystem.Models
 
             foreach (var cartItem in cartItems)
             {
-                db.Carts.Remove(cartItem);
+                db.Cart.Remove(cartItem);
             }
             db.SaveChanges();
         }
@@ -104,12 +104,12 @@ namespace OnlineFoodOrderingSystem.Models
         {
             decimal? total = (from cartItems in db.Carts
                 where cartItems.CartId == FoodCartID
-                              select (int?) cartItems.Count*cartItems.Product.Price).Sum();
+                              select (cartItems.Count * cartItems.Menu.Price)).Sum();
 
             return total ?? decimal.Zero;
         }
 
-        public int CreateOrder(EmployeeOrder customerOrder)
+        public int CreateOrder(EmployeeOrder EmployeeOrder)
         {
             decimal orderTotal = 0;
 
@@ -119,22 +119,22 @@ namespace OnlineFoodOrderingSystem.Models
             {
                 var orderedFoood = new OrderedFoood
                 {
-                    MenuItemID = item.MenuItemID, CustomerOrderId = customerOrder.Id, Quantity = item.Count
+                    MenuItemID = item.MenuItemID, EmployeeOrderId = EmployeeOrder.Id, Quantity = item.Count
                 };
 
-                orderTotal += (item.Count*item.Product.Price);
+                orderTotal += (item.Count*item.Menu.Price);
 
                 db.OrderedFoood.Add(orderedFoood);
             }
 
-            customerOrder.Amount = orderTotal;
+            EmployeeOrder.Amount = orderTotal;
 
             db.SaveChanges();
 
             EmptyCart();
 
-            return customerOrder.Id;
-        }*/
+            return EmployeeOrder.Id;
+        }
 
         public string GetCartId(HttpContextBase context)
         {
@@ -155,7 +155,7 @@ namespace OnlineFoodOrderingSystem.Models
             return context.Session[CartSessionKey].ToString();
         }
 
-        /*public void MigrateCart(string userName)
+        public void MigrateCart(string userName)
         {
             var foodCart = db.Carts.Where(c => c.CartId == FoodCartID);
             foreach (Cart item in foodCart)
@@ -164,7 +164,7 @@ namespace OnlineFoodOrderingSystem.Models
             }
 
             db.SaveChanges();
-        }*/
+        }
 
     }
 }

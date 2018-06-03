@@ -4,6 +4,7 @@ namespace OnlineFoodOrderingSystem.DAL
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using WebApplication1.DAL;
 
     public partial class Food_Ordering : DbContext
     {
@@ -13,7 +14,7 @@ namespace OnlineFoodOrderingSystem.DAL
         }
 
         public virtual DbSet<Tbl_MenuCategory> Tbl_MenuCategory { get; set; }
-        public virtual DbSet<Tbl_MenuItem> Tbl_MenuItem { get; set; }
+        public virtual DbSet<tbl_MenuItem> Tbl_MenuItem { get; set; }
         public virtual DbSet<Tbl_Employee> Tbl_Employee { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -22,11 +23,11 @@ namespace OnlineFoodOrderingSystem.DAL
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Tbl_MenuItem>()
+            modelBuilder.Entity<tbl_MenuItem>()
                 .Property(e => e.Price)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<Tbl_MenuItem>()
+            modelBuilder.Entity<tbl_MenuItem>()
                 .Property(e => e.Visible)
                 .IsFixedLength();
 

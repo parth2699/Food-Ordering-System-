@@ -6,21 +6,21 @@
     <edmx:StorageModels>
       <Schema Namespace="Food_OrderingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Member' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Tbl_Member">
+warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Employee">
           <Key>
-            <PropertyRef Name="Mem_ID" />
+            <PropertyRef Name="Emp_ID" />
           </Key>
-          <Property Name="Mem_ID" Type="int" Nullable="false" />
+          <Property Name="Emp_ID" Type="int" Nullable="false" />
           <Property Name="FName" Type="varchar" MaxLength="50" />
           <Property Name="LName" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Tbl_MenuCategory">
           <Key>
-            <PropertyRef Name="MenuCategoryId" />
+            <PropertyRef Name="MenuCatID" />
           </Key>
-          <Property Name="MenuCategoryId" Type="int" Nullable="false" />
+          <Property Name="MenuCatID" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Order" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -29,7 +29,7 @@ warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Member' does not have a prim
             <PropertyRef Name="MenuItemId" />
           </Key>
           <Property Name="MenuItemId" Type="int" Nullable="false" />
-          <Property Name="MenuCategoryId" Type="int" Nullable="false" />
+          <Property Name="MenuCatID" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="money" />
@@ -39,13 +39,13 @@ warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Member' does not have a prim
         <EntityContainer Name="Food_OrderingModelStoreContainer">
           <EntitySet Name="Tbl_MenuCategory" EntityType="Self.Tbl_MenuCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_MenuItem" EntityType="Self.tbl_MenuItem" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tbl_Member" EntityType="Self.Tbl_Member" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="Tbl_Employee" EntityType="Self.Tbl_Employee" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Tbl_Member].[Mem_ID] AS [Mem_ID], 
-    [Tbl_Member].[FName] AS [FName], 
-    [Tbl_Member].[LName] AS [LName], 
-    [Tbl_Member].[Email] AS [Email]
-    FROM [dbo].[Tbl_Member] AS [Tbl_Member]</DefiningQuery>
+    [Tbl_Employee].[Emp_ID] AS [Emp_ID], 
+    [Tbl_Employee].[FName] AS [FName], 
+    [Tbl_Employee].[LName] AS [LName], 
+    [Tbl_Employee].[Email] AS [Email]
+    FROM [dbo].[Tbl_Employee] AS [Tbl_Employee]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema>
@@ -55,9 +55,9 @@ warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Member' does not have a prim
       <Schema Namespace="Food_OrderingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Tbl_MenuCategory">
           <Key>
-            <PropertyRef Name="MenuCategoryId" />
+            <PropertyRef Name="MenuCatID" />
           </Key>
-          <Property Name="MenuCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="MenuCatID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Order" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -66,37 +66,37 @@ warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Member' does not have a prim
             <PropertyRef Name="MenuItemId" />
           </Key>
           <Property Name="MenuItemId" Type="Int32" Nullable="false" />
-          <Property Name="MenuCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="MenuCatID" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="Order" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Visible" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="Tbl_Member">
+        <EntityType Name="Tbl_Employee">
           <Key>
-            <PropertyRef Name="Mem_ID" />
+            <PropertyRef Name="Emp_ID" />
           </Key>
-          <Property Name="Mem_ID" Type="Int32" Nullable="false" />
+          <Property Name="Emp_ID" Type="Int32" Nullable="false" />
           <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="Food_OrderingEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Food_OrderingEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tbl_MenuCategory" EntityType="Self.Tbl_MenuCategory" />
           <EntitySet Name="tbl_MenuItem" EntityType="Self.tbl_MenuItem" />
-          <EntitySet Name="Tbl_Member" EntityType="Self.Tbl_Member" />
+          <EntitySet Name="Tbl_Employee" EntityType="Self.Tbl_Employee" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Food_OrderingModelStoreContainer" CdmEntityContainer="Food_OrderingEntities">
+        <EntityContainerMapping StorageEntityContainer="Food_OrderingModelStoreContainer" CdmEntityContainer="Food_OrderingEntities1">
           <EntitySetMapping Name="Tbl_MenuCategory">
             <EntityTypeMapping TypeName="Food_OrderingModel.Tbl_MenuCategory">
               <MappingFragment StoreEntitySet="Tbl_MenuCategory">
-                <ScalarProperty Name="MenuCategoryId" ColumnName="MenuCategoryId" />
+                <ScalarProperty Name="MenuCatID" ColumnName="MenuCatID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Order" ColumnName="Order" />
               </MappingFragment>
@@ -106,7 +106,7 @@ warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Member' does not have a prim
             <EntityTypeMapping TypeName="Food_OrderingModel.tbl_MenuItem">
               <MappingFragment StoreEntitySet="tbl_MenuItem">
                 <ScalarProperty Name="MenuItemId" ColumnName="MenuItemId" />
-                <ScalarProperty Name="MenuCategoryId" ColumnName="MenuCategoryId" />
+                <ScalarProperty Name="MenuCatID" ColumnName="MenuCatID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -115,10 +115,10 @@ warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Member' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Member">
-            <EntityTypeMapping TypeName="Food_OrderingModel.Tbl_Member">
-              <MappingFragment StoreEntitySet="Tbl_Member">
-                <ScalarProperty Name="Mem_ID" ColumnName="Mem_ID" />
+          <EntitySetMapping Name="Tbl_Employee">
+            <EntityTypeMapping TypeName="Food_OrderingModel.Tbl_Employee">
+              <MappingFragment StoreEntitySet="Tbl_Employee">
+                <ScalarProperty Name="Emp_ID" ColumnName="Emp_ID" />
                 <ScalarProperty Name="FName" ColumnName="FName" />
                 <ScalarProperty Name="LName" ColumnName="LName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -139,7 +139,7 @@ warning 6002: The table/view 'Food_Ordering.dbo.Tbl_Member' does not have a prim
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

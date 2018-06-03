@@ -146,17 +146,24 @@
     <Content Include="Content\Image\starters.ico" />
     <Content Include="Content\JavaScript\ResponsiveSlider.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="DAL\Model1.Context.tt">
+    <Content Include="DAL\FoodOrderingModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OnlineFoodModel.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>FoodOrderingModel.edmx</DependentUpon>
+      <LastGenOutput>FoodOrderingModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DAL\Model1.tt">
+    <Content Include="DAL\FoodOrderingModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OnlineFoodModel.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>FoodOrderingModel.edmx</DependentUpon>
+      <LastGenOutput>FoodOrderingModel.cs</LastGenOutput>
     </Content>
     <Content Include="Global.asax" />
+    <EntityDeploy Include="DAL\FoodOrderingModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FoodOrderingModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\FoodOrderingModel.edmx.diagram">
+      <DependentUpon>FoodOrderingModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -166,24 +173,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
-    <Content Include="OnlineFoodOrder.xsc">
-      <DependentUpon>OnlineFoodOrder.xsd</DependentUpon>
-    </Content>
-    <EntityDeploy Include="DAL\OnlineFoodModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OnlineFoodModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DAL\OnlineFoodModel.edmx.diagram">
-      <DependentUpon>OnlineFoodModel.edmx</DependentUpon>
-    </Content>
-    <None Include="OnlineFoodOrder.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OnlineFoodOrder.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="OnlineFoodOrder.xss">
-      <DependentUpon>OnlineFoodOrder.xsd</DependentUpon>
-    </Content>
     <Content Include="Views\FoodCategories\Create.cshtml" />
     <Content Include="Views\FoodCategories\Delete.cshtml" />
     <Content Include="Views\FoodCategories\Details.cshtml" />
@@ -216,6 +205,8 @@
     <Content Include="Views\OrderedFooods\Edit.cshtml" />
     <Content Include="Views\OrderedFooods\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -244,31 +235,30 @@
     <Compile Include="Controllers\FoodCategoriesController.cs" />
     <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\OrderedFooodsController.cs" />
+    <Compile Include="DAL\FoodOrderingModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodOrderingModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\FoodOrderingModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodOrderingModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\FoodOrderingModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FoodOrderingModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Food_Ordering.cs" />
-    <Compile Include="DAL\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\OnlineFoodModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineFoodModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\Tbl_Employee.cs" />
-    <Compile Include="DAL\Tbl_Member.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="DAL\Tbl_Employee.cs">
+      <DependentUpon>FoodOrderingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Tbl_MenuCategory.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>FoodOrderingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\tbl_MenuItem.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>FoodOrderingModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,11 +270,6 @@
     <Compile Include="Models\FoodTrolley.cs" />
     <Compile Include="Models\OrderedFoood.cs" />
     <Compile Include="Models\Menu.cs" />
-    <Compile Include="OnlineFoodOrder.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OnlineFoodOrder.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\FoodTrolleyViewModel.cs" />
     <Compile Include="ViewModel\RemoveFoodTrolleyViewModel.cs" />
@@ -299,8 +284,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Share\Error.cshtml" />
-    <Content Include="Views\Share\_Layout.cshtml" />
     <Content Include="Views\FoodBasket\CartSummary.cshtml" />
     <Content Include="Views\FoodBasket\Index.cshtml" />
     <None Include="Web.Debug.config">
@@ -313,7 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

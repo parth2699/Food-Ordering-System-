@@ -844,7 +844,8 @@ jQuery.ajax = function( url, options ) {
 				statusText = nativeStatusText;
 
 			// Called once
-			if ( state === 2 ) {
+            if (state === 2)
+            {
 				return;
 			}
 
